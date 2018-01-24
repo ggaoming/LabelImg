@@ -939,7 +939,9 @@ class MainWindow(QMainWindow, WindowMixin):
     def scanAllImages(self, folderPath):
         extensions = ['.jpeg', '.jpg', '.png', '.bmp']
         images = []
-
+        # check path type and force convert to str
+        if not isinstance(folderPath, str):
+            folderPath = str(folderPath)
         for root, dirs, files in os.walk(folderPath):
             for file in files:
                 if file.lower().endswith(tuple(extensions)):
